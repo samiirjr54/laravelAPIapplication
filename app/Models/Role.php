@@ -1,0 +1,26 @@
+<?php
+
+namespace App\Models;
+
+use App\Models\User;
+use App\Models\Products;
+use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
+
+class Role extends Model
+{
+    use HasFactory;
+
+    protected $fillable = [
+        'name',
+        'desc'
+    ];
+
+    public function users(){
+        return $this->belongsToMany(User::class);
+    }
+
+       public function products(){
+        return $this->hasMany(Products::class);
+    }
+}
